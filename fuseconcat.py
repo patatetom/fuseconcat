@@ -73,9 +73,11 @@ class Concatenate(Operations):
             'st_atime': self.ctime,
             }
 
+
     def readdir(self, path, fh):
         # there is only one file in folder : the «concatenated» file
         return ('.', '..', 'concatenated')
+
 
     def __get_file(self, global_offset):
         # open the "good" file and return the local offset
@@ -94,6 +96,7 @@ class Concatenate(Operations):
         # return None if global offset is file size
         return None
 
+
     def read(self, path, size, offset, fh):
         data = b''
         while size:
@@ -111,6 +114,7 @@ class Concatenate(Operations):
 #            if read < size and args.debug:
 #                print('\033[93m' + '● read only {} bytes'.format(read) + '\033[0m')
         return data
+
 
 if __name__ == '__main__':
     from argparse import ArgumentParser
